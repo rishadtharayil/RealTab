@@ -2,6 +2,8 @@
 
 An aesthetic, lightweight, and modern Chrome New Tab extension with a **matte neutral design**, multi-engine search, live weather, pomodoro timer, scratchpad & to-do list, offline procedural ambient soundscapes, and comprehensive bookmark management.
 
+![RealTab Screenshot](assets/screenshot.png)
+
 ---
 
 ## 🌟 Key Features

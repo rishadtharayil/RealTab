@@ -1,0 +1,654 @@
+/* ==========================================================================
+   REALTAB - MATTE WIDGETS & SETTINGS DRAWER STYLESHEET
+   Pomodoro, Notes/Todos, Ambient Mixer, Quotes, Weather Modal, Settings Drawer
+   ========================================================================== */
+
+/* DASHBOARD GRID CONTAINER */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.widget-card {
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.15rem;
+}
+
+.widget-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   POMODORO WIDGET
+   ========================================================================== */
+.pomo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.pomo-modes {
+  display: flex;
+  background: var(--bg-surface);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  margin-bottom: 1.25rem;
+  gap: 2px;
+}
+
+.pomo-mode-tab {
+  padding: 0.35rem 0.8rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pomo-mode-tab:hover {
+  color: var(--text-main);
+}
+
+.pomo-mode-tab.active {
+  background: var(--card-bg);
+  color: var(--text-main);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.pomo-timer-circle {
+  position: relative;
+  width: 175px;
+  height: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.pomo-svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.pomo-bg-ring {
+  fill: none;
+  stroke: var(--bg-surface);
+  stroke-width: 7;
+}
+
+.pomo-progress-ring {
+  fill: none;
+  stroke: var(--accent-color);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 552.92;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.4s linear;
+}
+
+.pomo-center-time {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.pomo-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.15rem;
+}
+
+.pomo-goal-box {
+  width: 100%;
+}
+
+.pomo-goal-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-size: 0.825rem;
+  text-align: center;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.pomo-goal-input:focus {
+  border-color: var(--accent-color);
+  background: var(--card-bg);
+}
+
+/* ==========================================================================
+   NOTES & TO-DO WIDGET
+   ========================================================================== */
+.notes-widget-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 0.4rem;
+}
+
+.notes-tab-btn {
+  padding: 0.3rem 0.65rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.notes-tab-btn.active {
+  color: var(--text-main);
+}
+
+.notes-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.4rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+/* TODO PANE */
+.todo-input-row {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.todo-items-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-height: 190px;
+  overflow-y: auto;
+  padding-right: 2px;
+  margin-bottom: 0.65rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.65rem;
+  background: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--card-border);
+  transition: all var(--transition-fast);
+}
+
+.todo-item:hover {
+  background: #edf2f7;
+  border-color: var(--card-border-hover);
+}
+
+[data-theme="matte-slate"] .todo-item:hover {
+  background: #2a303a;
+}
+
+.todo-checkbox-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.todo-checkbox-wrap input {
+  opacity: 0;
+  position: absolute;
+}
+
+.todo-custom-check {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--text-dim);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+  transition: all var(--transition-fast);
+}
+
+.todo-checkbox-wrap input:checked ~ .todo-custom-check {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.todo-checkbox-wrap input:checked ~ .todo-custom-check::after {
+  content: '✓';
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+  word-break: break-word;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--text-dim);
+}
+
+.todo-delete-btn {
+  opacity: 0;
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 3px;
+  transition: all var(--transition-fast);
+}
+
+.todo-delete-btn:hover {
+  color: #ef4444;
+}
+
+.todo-item:hover .todo-delete-btn {
+  opacity: 1;
+}
+
+.todo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.todo-empty-state {
+  text-align: center;
+  padding: 1.75rem 0;
+  color: var(--text-dim);
+  font-size: 0.825rem;
+}
+
+/* SCRATCHPAD PANE */
+.scratchpad-area {
+  width: 100%;
+  height: 165px;
+  background: var(--bg-surface);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.825rem;
+  resize: none;
+  outline: none;
+  margin-bottom: 0.65rem;
+  line-height: 1.5;
+}
+
+.scratchpad-area:focus {
+  border-color: var(--accent-color);
+  background: var(--card-bg);
+}
+
+.scratchpad-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* ==========================================================================
+   QUOTE OF THE DAY CARD
+   ========================================================================== */
+.quote-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 2.25rem auto;
+  text-align: center;
+  padding: 1.15rem 1.5rem;
+  position: relative;
+  background: var(--card-bg);
+}
+
+.quote-text {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin-bottom: 0.35rem;
+  transition: opacity 0.2s ease;
+}
+
+.quote-author {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: opacity 0.2s ease;
+}
+
+.quote-actions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 2px;
+}
+
+/* ==========================================================================
+   AMBIENT MIXER MODAL
+   ========================================================================== */
+.ambient-channels-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin: 1.25rem 0;
+}
+
+.ambient-channel-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ambient-channel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ambient-channel-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-main);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-round {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #cbd5e1;
+  transition: .2s;
+  border-radius: 34px;
+}
+
+[data-theme="matte-slate"] .slider-round {
+  background-color: #475569;
+}
+
+.slider-round:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .2s;
+  border-radius: 50%;
+}
+
+input:checked + .slider-round {
+  background-color: var(--accent-color);
+}
+
+input:checked + .slider-round:before {
+  transform: translateX(16px);
+}
+
+.volume-slider-range {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--card-border);
+  outline: none;
+}
+
+.volume-slider-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   WEATHER MODAL & FORECAST
+   ========================================================================== */
+.weather-modal-current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 1rem;
+}
+
+.weather-modal-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.weather-modal-icon {
+  font-size: 3rem;
+}
+
+.weather-modal-temp {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.weather-modal-condition {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.weather-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 1.15rem;
+}
+
+.weather-detail-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem;
+  text-align: center;
+}
+
+.weather-detail-label {
+  font-size: 0.725rem;
+  color: var(--text-dim);
+  margin-bottom: 0.2rem;
+}
+
+.weather-detail-val {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.weather-forecast-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.forecast-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.65rem;
+  border-radius: var(--radius-xs);
+  background: var(--bg-surface);
+  border: 1px solid var(--card-border);
+  font-size: 0.825rem;
+}
+
+/* ==========================================================================
+   SETTINGS SLIDE-OUT DRAWER
+   ========================================================================== */
+.settings-drawer-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.4);
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.settings-drawer-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.settings-drawer-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  background: var(--card-bg);
+  border-left: 1px solid var(--card-border);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+
+.settings-drawer-backdrop.active .settings-drawer-panel {
+  transform: translateX(0);
+}
+
+.settings-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.settings-drawer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.settings-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.wallpaper-presets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+
+.wallpaper-preset-card {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-xs);
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--card-border);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.wallpaper-preset-card:hover {
+  border-color: var(--text-muted);
+}
+
+.wallpaper-preset-card.active {
+  border-color: var(--accent-color);
+}
+
+.wallpaper-preset-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  font-size: 0.65rem;
+  padding: 2px 4px;
+  text-align: center;
+  color: #fff;
+}

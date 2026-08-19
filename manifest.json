@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "RealTab - Minimalist Matte New Tab Dashboard",
+  "version": "1.0.0",
+  "description": "An aesthetic, minimalist matte New Tab dashboard with voice search, bookmark manager, weather, pomodoro, notes, and ambient sounds.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage",
+    "bookmarks",
+    "topSites",
+    "unlimitedStorage",
+    "geolocation"
+  ],
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    },
+    "default_title": "RealTab"
+  }
+}

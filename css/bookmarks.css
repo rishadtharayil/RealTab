@@ -1,0 +1,406 @@
+/* ==========================================================================
+   REALTAB - MATTE SEARCH & BOOKMARKS STYLESHEET
+   Clean White / Slate Surfaces, Crisp Pill Cards, Minimal Badges
+   ========================================================================== */
+
+/* SEARCH SECTION */
+.search-section {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto 2.25rem auto;
+  position: relative;
+}
+
+.search-bar-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--card-shadow);
+  padding: 0.35rem 0.55rem;
+  transition: all var(--transition-fast);
+}
+
+.search-bar-wrapper:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--card-shadow-hover);
+}
+
+/* SEARCH ENGINE SELECTOR */
+.search-engine-selector {
+  position: relative;
+}
+
+.search-engine-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.65rem;
+  background: var(--bg-surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.search-engine-btn:hover {
+  background: var(--card-border);
+}
+
+.dropdown-arrow {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.search-engine-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 200px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow-hover);
+  padding: 0.4rem;
+  z-index: 500;
+  display: none;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.search-engine-dropdown.active {
+  display: flex;
+}
+
+.search-engine-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--radius-xs);
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.search-engine-item:hover {
+  background: var(--bg-surface);
+  color: var(--accent-color);
+}
+
+.search-engine-item.active {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+/* SEARCH INPUT */
+.search-input-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0.6rem 0.85rem;
+  font-size: 1rem;
+  color: var(--text-main);
+  font-family: inherit;
+}
+
+.search-input-field::placeholder {
+  color: var(--text-dim);
+}
+
+/* SEARCH ACTIONS */
+.search-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-right: 0.2rem;
+}
+
+.search-action-btn:hover {
+  color: var(--text-main);
+  background: var(--bg-surface);
+}
+
+/* MIC BUTTON */
+.search-mic-btn {
+  color: var(--text-muted);
+}
+
+.search-mic-btn.listening {
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  border: 1px solid #fecaca;
+}
+
+/* VOICE RECOGNITION VISUALIZER */
+.voice-visualizer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.25rem 0;
+}
+
+.voice-wave-bars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 50px;
+  margin: 1.25rem 0;
+}
+
+.voice-bar {
+  width: 5px;
+  height: 10px;
+  background: var(--accent-color);
+  border-radius: 99px;
+  animation: waveAnim 0.9s ease-in-out infinite alternate;
+}
+
+.voice-bar:nth-child(1) { animation-delay: 0.1s; }
+.voice-bar:nth-child(2) { animation-delay: 0.25s; }
+.voice-bar:nth-child(3) { animation-delay: 0.4s; }
+.voice-bar:nth-child(4) { animation-delay: 0.2s; }
+.voice-bar:nth-child(5) { animation-delay: 0.35s; }
+
+@keyframes waveAnim {
+  0% { height: 8px; }
+  50% { height: 38px; }
+  100% { height: 12px; }
+}
+
+.voice-transcript-text {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-main);
+  min-height: 1.75rem;
+  margin-bottom: 0.4rem;
+  word-break: break-word;
+}
+
+.voice-status-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   BOOKMARKS / SHORTCUTS GRID
+   ========================================================================== */
+.bookmarks-section {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.bookmarks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.bookmark-categories {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.category-pill {
+  padding: 0.35rem 0.85rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font-size: 0.825rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.category-pill:hover {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  border-color: var(--card-border-hover);
+}
+
+.category-pill.active {
+  background: var(--accent-color);
+  color: #ffffff;
+  border-color: var(--accent-color);
+  font-weight: 600;
+}
+
+.bookmarks-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bookmark-search-input {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 0.85rem;
+  color: var(--text-main);
+  font-size: 0.825rem;
+  outline: none;
+  width: 150px;
+  transition: width var(--transition-normal), border-color var(--transition-fast);
+}
+
+.bookmark-search-input:focus {
+  width: 200px;
+  border-color: var(--accent-color);
+}
+
+/* BOOKMARKS GRID */
+.bookmarks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.85rem;
+}
+
+.bookmark-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem 0.65rem 0.8rem 0.65rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bookmark-card:hover {
+  background: var(--card-bg-hover);
+  transform: translateY(-2px);
+  border-color: var(--card-border-hover);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.bookmark-card.is-pinned {
+  border-color: var(--accent-color);
+}
+
+.bookmark-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.bookmark-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.55rem;
+  transition: transform var(--transition-fast);
+  overflow: hidden;
+}
+
+.bookmark-card:hover .bookmark-icon-wrap {
+  transform: scale(1.04);
+}
+
+.bookmark-favicon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.bookmark-fallback-avatar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.05rem;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+.bookmark-title {
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--text-main);
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ACTIONS OVERLAY */
+.bookmark-actions {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.bookmark-card:hover .bookmark-actions,
+.bookmark-card.is-pinned .bookmark-pin-btn {
+  opacity: 1;
+}
+
+.bookmark-pin-btn {
+  color: #eab308;
+  font-size: 0.85rem;
+}
+
+.bookmark-edit-btn {
+  font-size: 0.75rem;
+}
+
+.bookmarks-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  background: var(--card-bg);
+  border: 1px dashed var(--card-border);
+  border-radius: var(--radius-lg);
+}
+
+.empty-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}

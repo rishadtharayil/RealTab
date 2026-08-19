@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Tab</title>
+  <link rel="icon" type="image/png" href="assets/icon48.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/bookmarks.css" />
+  <link rel="stylesheet" href="css/widgets.css" />
+</head>
+<body>
+  <!-- BACKGROUND LAYERS -->
+  <div id="app-background"></div>
+  <div id="app-bg-overlay"></div>
+
+  <!-- MAIN APP WRAPPER -->
+  <div class="app-container">
+
+    <!-- TOP HEADER -->
+    <header class="header-bar">
+      <div class="header-left">
+        <!-- Weather Quick Pill -->
+        <div id="widget-container-weather">
+          <button type="button" class="header-pill" id="weather-pill" title="Click for 5-day forecast">
+            <span id="weather-pill-icon">🌤️</span>
+            <span id="weather-pill-temp">--°</span>
+            <span id="weather-pill-city" style="opacity:0.75; font-size:0.8rem;">Loading...</span>
+          </button>
+        </div>
+
+        <!-- Pomodoro Quick Pill -->
+        <div id="widget-container-pomodoro">
+          <button type="button" class="header-pill" id="pomodoro-header-pill" title="Jump to Focus Timer">
+            <span>⏱️</span>
+            <span id="pomodoro-pill-time">25:00</span>
+          </button>
+        </div>
+
+        <!-- Ambient Soundscapes Pill -->
+        <div id="widget-container-ambient">
+          <button type="button" class="header-pill" id="ambient-pill-btn" title="Ambient Soundscapes Mixer">
+            <span>🎵</span>
+            <span id="ambient-pill-text">Ambient</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <!-- Customization Drawer Trigger -->
+        <button type="button" class="header-icon-btn" id="settings-toggle-btn" title="Customize Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- CENTER HERO (CLOCK & GREETING) -->
+    <section class="hero-section">
+      <div id="widget-container-clock">
+        <div class="clock-display">
+          <h1 class="clock-time" id="main-clock-time">12:00</h1>
+          <span class="clock-ampm" id="main-clock-ampm">PM</span>
+        </div>
+        <div class="clock-date" id="main-clock-date">Wednesday, August 19, 2026</div>
+      </div>
+
+      <div id="widget-container-greeting">
+        <h2 class="greeting-text" id="greeting-text">Good afternoon</h2>
+      </div>
+    </section>
+
+    <!-- QUOTE OF THE DAY -->
+    <div id="widget-container-quotes">
+      <div class="glass-card quote-card">
+        <p class="quote-text" id="quote-text">"Simplicity is the soul of efficiency."</p>
+        <span class="quote-author" id="quote-author">— Austin Freeman</span>
+        <div class="quote-actions">
+          <button type="button" class="btn-icon" id="quote-copy-btn" title="Copy quote">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+          <button type="button" class="btn-icon" id="quote-refresh-btn" title="New quote">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- OMNI SEARCH SECTION -->
+    <div id="widget-container-search">
+      <section class="search-section">
+        <form id="search-form" class="search-bar-wrapper">
+          <!-- Search Engine Selector -->
+          <div class="search-engine-selector">
+            <button type="button" class="search-engine-btn" id="search-engine-selector-btn" title="Switch Search Engine">
+              <span id="selected-engine-icon">🔍</span>
+              <span class="dropdown-arrow">▼</span>
+            </button>
+            <div class="search-engine-dropdown" id="search-engine-dropdown">
+              <div class="search-engine-item active" data-engine="google">
+                <span>🔍</span> Google
+              </div>
+              <div class="search-engine-item" data-engine="duckduckgo">
+                <span>🦆</span> DuckDuckGo
+              </div>
+              <div class="search-engine-item" data-engine="bing">
+                <span>🌊</span> Bing
+              </div>
+              <div class="search-engine-item" data-engine="youtube">
+                <span>▶️</span> YouTube
+              </div>
+              <div class="search-engine-item" data-engine="github">
+                <span>🐙</span> GitHub
+              </div>
+              <div class="search-engine-item" data-engine="reddit">
+                <span>🤖</span> Reddit
+              </div>
+              <div class="search-engine-item" data-engine="perplexity">
+                <span>🧠</span> Perplexity AI
+              </div>
+              <div class="search-engine-item" data-engine="chatgpt">
+                <span>✨</span> ChatGPT
+              </div>
+            </div>
+          </div>
+
+          <!-- Search Input -->
+          <input 
+            type="text" 
+            id="search-input" 
+            class="search-input-field" 
+            placeholder="Search Google or type a URL..." 
+            autocomplete="off" 
+            spellcheck="false" 
+            autofocus 
+          />
+
+          <!-- Clear Button -->
+          <button type="button" class="search-action-btn" id="search-clear-btn" style="display:none;" title="Clear search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+
+        </form>
+      </section>
+    </div>
+
+    <!-- BOOKMARKS & SHORTCUTS SECTION -->
+    <div id="widget-container-bookmarks">
+      <section class="bookmarks-section">
+        <div class="bookmarks-header">
+          <div class="bookmark-categories" id="bookmark-categories">
+            <!-- Category Pills injected via JS -->
+          </div>
+          <div class="bookmarks-tools">
+            <input type="text" id="bookmark-search-filter" class="bookmark-search-input" placeholder="Filter shortcuts..." />
+            <button type="button" class="btn btn-secondary btn-sm" id="import-chrome-bookmarks-btn" style="display:none;">
+              📥 Sync Chrome
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" id="add-bookmark-btn">
+              + Add
+            </button>
+          </div>
+        </div>
+
+        <div class="bookmarks-grid" id="bookmarks-grid">
+          <!-- Bookmark Cards injected via JS -->
+        </div>
+      </section>
+    </div>
+
+    <!-- DASHBOARD WIDGETS (POMODORO & NOTES) -->
+    <div class="dashboard-grid">
+      <!-- Pomodoro Card -->
+      <div id="widget-container-pomodoro">
+        <div class="glass-card widget-card" id="pomodoro-widget-card">
+          <div class="widget-header">
+            <h3 class="widget-title">⏱️ Focus Timer</h3>
+            <button type="button" class="btn btn-secondary btn-sm" id="pomo-skip-btn">Skip Mode ➔</button>
+          </div>
+          <div class="pomo-container">
+            <div class="pomo-modes">
+              <button type="button" class="pomo-mode-tab active" data-mode="focus">Focus (25m)</button>
+              <button type="button" class="pomo-mode-tab" data-mode="shortBreak">Short Break (5m)</button>
+              <button type="button" class="pomo-mode-tab" data-mode="longBreak">Long Break (15m)</button>
+            </div>
+            <div class="pomo-timer-circle">
+              <svg class="pomo-svg" viewBox="0 0 200 200">
+                <circle class="pomo-bg-ring" cx="100" cy="100" r="88"></circle>
+                <circle class="pomo-progress-ring" id="pomo-progress-circle" cx="100" cy="100" r="88"></circle>
+              </svg>
+              <div class="pomo-center-time" id="pomo-time-display">25:00</div>
+            </div>
+            <div class="pomo-controls">
+              <button type="button" class="btn btn-primary" id="pomo-start-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Start
+              </button>
+              <button type="button" class="btn btn-secondary" id="pomo-reset-btn">Reset</button>
+            </div>
+            <div class="pomo-goal-box">
+              <input type="text" id="pomo-goal-input" class="pomo-goal-input" placeholder="🎯 Current focus goal..." />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes & Tasks Card -->
+      <div id="widget-container-notes">
+        <div class="glass-card widget-card" id="notes-widget-card">
+          <div class="notes-widget-tabs">
+            <button type="button" class="notes-tab-btn active" id="tab-todo-btn">To-Do List</button>
+            <button type="button" class="notes-tab-btn" id="tab-scratchpad-btn">Quick Notes</button>
+          </div>
+
+          <!-- To-Do Pane -->
+          <div id="todo-pane">
+            <form id="todo-input-form" class="todo-input-row">
+              <input type="text" id="todo-input-field" class="form-input" placeholder="Add a new task..." />
+              <button type="submit" class="btn btn-primary btn-sm">+</button>
+            </form>
+            <ul class="todo-items-list" id="todo-items-list">
+              <!-- Todo items injected by JS -->
+            </ul>
+            <div class="todo-footer">
+              <span id="todo-remaining-count">0 items remaining</span>
+              <button type="button" class="btn-icon" id="todo-clear-completed" style="font-size:0.75rem; color:var(--text-dim);" title="Clear completed">Clear completed</button>
+            </div>
+          </div>
+
+          <!-- Scratchpad Pane -->
+          <div id="scratchpad-pane" class="hidden">
+            <textarea id="scratchpad-textarea" class="scratchpad-area" placeholder="Write thoughts, ideas, or temporary snippets..."></textarea>
+            <div class="scratchpad-footer">
+              <span id="scratchpad-words-count">0 words, 0 chars</span>
+              <div style="display:flex; gap:6px;">
+                <button type="button" class="btn btn-secondary btn-sm" id="scratchpad-copy-btn">Copy</button>
+                <button type="button" class="btn btn-danger btn-sm" id="scratchpad-clear-btn">Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODALS & SLIDE-OUT DRAWERS
+       ========================================================================== -->
+
+
+
+
+  <!-- ADD / EDIT BOOKMARK MODAL -->
+  <div class="modal-backdrop hidden" id="bookmark-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="bookmark-modal-title">Add Shortcut</h3>
+        <button type="button" class="btn-icon" id="close-bookmark-modal">✕</button>
+      </div>
+      <form id="bookmark-form">
+        <div class="form-group">
+          <label for="bookmark-url-input">Website URL</label>
+          <input type="text" id="bookmark-url-input" class="form-input" placeholder="e.g. github.com" required />
+        </div>
+        <div class="form-group">
+          <label for="bookmark-title-input">Shortcut Name (optional)</label>
+          <input type="text" id="bookmark-title-input" class="form-input" placeholder="e.g. GitHub" />
+        </div>
+        <div class="form-group">
+          <label for="bookmark-category-select">Category</label>
+          <select id="bookmark-category-select" class="form-select">
+            <!-- Categories injected by JS -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-checkbox-label">
+            <input type="checkbox" id="bookmark-pinned-checkbox" />
+            <span>Pin to Top Favorites</span>
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="delete-bookmark-btn" style="display:none; margin-right:auto;">Delete</button>
+          <button type="button" class="btn btn-secondary" id="cancel-bookmark-modal-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Shortcut</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- LIVE WEATHER & 5-DAY FORECAST MODAL -->
+  <div class="modal-backdrop hidden" id="weather-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="weather-modal-city-title">Weather Forecast</h3>
+        <button type="button" class="btn-icon" id="weather-modal-close">✕</button>
+      </div>
+      
+      <!-- Current conditions -->
+      <div class="weather-modal-current">
+        <div class="weather-modal-left">
+          <div class="weather-modal-icon" id="weather-modal-icon">🌤️</div>
+          <div>
+            <div class="weather-modal-temp" id="weather-modal-temp">--°</div>
+            <div class="weather-modal-condition" id="weather-modal-condition">Loading...</div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" id="weather-unit-toggle">Switch to °F</button>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="weather-details-grid">
+        <div class="weather-detail-box">
+          <div class="weather-detail-label">Feels Like</div>
+          <div class="weather-detail-val" id="weather-modal-feels">--°</div>
+        </div>
+        <div class="weather-detail-box">
+          <div class="weather-detail-label">Humidity</div>
+          <div class="weather-detail-val" id="weather-modal-humidity">--%</div>
+        </div>
+        <div class="weather-detail-box">
+          <div class="weather-detail-label">Wind Speed</div>
+          <div class="weather-detail-val" id="weather-modal-wind">-- km/h</div>
+        </div>
+      </div>
+
+      <!-- 5-Day Forecast -->
+      <h4 style="font-size:0.85rem; margin-bottom:0.5rem; color:var(--text-muted); font-weight:600;">5-Day Daily Outlook</h4>
+      <div class="weather-forecast-list" id="weather-forecast-list">
+        <!-- Forecast rows injected by JS -->
+      </div>
+
+      <!-- Change City Search -->
+      <form id="weather-city-form" style="margin-top:1.15rem;">
+        <div class="form-group" style="margin-bottom:0;">
+          <div style="display:flex; gap:0.4rem;">
+            <input type="text" id="weather-city-input" class="form-input" placeholder="Search city (e.g. Tokyo, Paris, Seattle)" />
+            <button type="submit" class="btn btn-primary btn-sm">Search</button>
+          </div>
+          <span id="weather-search-error" style="font-size:0.75rem; color:#dc2626; margin-top:3px;"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- AMBIENT SOUND MIXER MODAL -->
+  <div class="modal-backdrop hidden" id="ambient-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>🎵 Ambient Soundscapes</h3>
+        <button type="button" class="btn-icon" id="ambient-modal-close">✕</button>
+      </div>
+      <p style="font-size:0.825rem; color:var(--text-muted);">Procedural offline audio synthesis for peaceful focus and relaxation.</p>
+      
+      <div class="ambient-channels-grid">
+        <!-- Rain -->
+        <div class="ambient-channel-card">
+          <div class="ambient-channel-header">
+            <span class="ambient-channel-title">🌧️ Soothing Rain</span>
+            <label class="switch">
+              <input type="checkbox" id="ambient-rain-toggle" />
+              <span class="slider-round"></span>
+            </label>
+          </div>
+          <input type="range" min="0" max="1" step="0.05" value="0.5" class="volume-slider-range" id="ambient-rain-volume" />
+        </div>
+
+        <!-- Ocean Waves -->
+        <div class="ambient-channel-card">
+          <div class="ambient-channel-header">
+            <span class="ambient-channel-title">🌊 Ocean Waves</span>
+            <label class="switch">
+              <input type="checkbox" id="ambient-waves-toggle" />
+              <span class="slider-round"></span>
+            </label>
+          </div>
+          <input type="range" min="0" max="1" step="0.05" value="0.5" class="volume-slider-range" id="ambient-waves-volume" />
+        </div>
+
+        <!-- Lo-Fi Vinyl / Cafe -->
+        <div class="ambient-channel-card">
+          <div class="ambient-channel-header">
+            <span class="ambient-channel-title">☕ Lo-Fi Cafe</span>
+            <label class="switch">
+              <input type="checkbox" id="ambient-vinyl-toggle" />
+              <span class="slider-round"></span>
+            </label>
+          </div>
+          <input type="range" min="0" max="1" step="0.05" value="0.4" class="volume-slider-range" id="ambient-vinyl-volume" />
+        </div>
+
+        <!-- White Noise -->
+        <div class="ambient-channel-card">
+          <div class="ambient-channel-header">
+            <span class="ambient-channel-title">📻 White Noise</span>
+            <label class="switch">
+              <input type="checkbox" id="ambient-whitenoise-toggle" />
+              <span class="slider-round"></span>
+            </label>
+          </div>
+          <input type="range" min="0" max="1" step="0.05" value="0.3" class="volume-slider-range" id="ambient-whitenoise-volume" />
+        </div>
+      </div>
+
+      <div class="modal-footer" style="margin-top:0;">
+        <button type="button" class="btn btn-primary" id="ambient-master-play-btn" style="width:100%;">
+          Play Soundscape
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS & CUSTOMIZATION SLIDE-OUT DRAWER -->
+  <div class="settings-drawer-backdrop hidden" id="settings-drawer">
+    <div class="settings-drawer-panel">
+      <div class="settings-drawer-header">
+        <h3 style="font-size:1.1rem; font-weight:700;">⚙️ Customization Hub</h3>
+        <button type="button" class="btn-icon" id="settings-close-btn">✕</button>
+      </div>
+
+      <div class="settings-drawer-content">
+        <!-- Theme Selection -->
+        <div>
+          <h4 class="settings-section-title">Color Palette</h4>
+          <div class="form-group">
+            <select id="setting-theme-select" class="form-select">
+              <option value="clean-chalk">Clean Chalk (White & Slate Grey)</option>
+              <option value="sage-mint">Sage & Mint (Soft Light Green)</option>
+              <option value="nordic-sky">Nordic Sky (Soft Light Blue)</option>
+              <option value="warm-stone">Warm Sand & Stone (Muted Taupe)</option>
+              <option value="soft-lavender">Soft Lavender (Gentle Mist)</option>
+              <option value="matte-slate">Matte Slate (Low-glare Dark)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Wallpaper Management -->
+        <div>
+          <h4 class="settings-section-title">Background & Wallpaper</h4>
+          <div class="wallpaper-presets-grid">
+            <div class="wallpaper-preset-card active" data-preset="none">
+              <span class="wallpaper-preset-label">Solid Matte</span>
+            </div>
+            <div class="wallpaper-preset-card" data-preset="sky" style="background-image: url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=400&q=70');">
+              <span class="wallpaper-preset-label">Morning Sky</span>
+            </div>
+            <div class="wallpaper-preset-card" data-preset="sage" style="background-image: url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=400&q=70');">
+              <span class="wallpaper-preset-label">Sage Botanic</span>
+            </div>
+            <div class="wallpaper-preset-card" data-preset="stone" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=70');">
+              <span class="wallpaper-preset-label">Warm Stone</span>
+            </div>
+            <div class="wallpaper-preset-card" data-preset="fog" style="background-image: url('https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=400&q=70');">
+              <span class="wallpaper-preset-label">Soft Mist</span>
+            </div>
+            <div class="wallpaper-preset-card" data-preset="minimal" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=70');">
+              <span class="wallpaper-preset-label">Sandy Shore</span>
+            </div>
+            <div class="wallpaper-preset-card" data-preset="texture" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=70');">
+              <span class="wallpaper-preset-label">Matte Flow</span>
+            </div>
+          </div>
+
+          <!-- Custom Wallpaper URL -->
+          <div class="form-group">
+            <label>Custom Image URL</label>
+            <div style="display:flex; gap:0.4rem;">
+              <input type="text" id="setting-wallpaper-url" class="form-input" placeholder="https://..." />
+              <button type="button" class="btn btn-secondary btn-sm" id="setting-wallpaper-url-btn">Apply</button>
+            </div>
+          </div>
+
+          <!-- Custom Wallpaper Upload -->
+          <div class="form-group">
+            <label>Upload From Device</label>
+            <input type="file" id="setting-wallpaper-file" class="form-input" accept="image/*" />
+          </div>
+
+          <!-- Blur Slider -->
+          <div class="form-group">
+            <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+              <label>Background Blur</label>
+              <span id="setting-blur-value" style="font-size:0.75rem; color:var(--text-muted);">0px</span>
+            </div>
+            <input type="range" id="setting-wallpaper-blur" min="0" max="25" value="0" class="volume-slider-range" />
+          </div>
+
+          <!-- Dim Slider -->
+          <div class="form-group">
+            <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+              <label>Background Wash</label>
+              <span id="setting-dim-value" style="font-size:0.75rem; color:var(--text-muted);">0%</span>
+            </div>
+            <input type="range" id="setting-wallpaper-dim" min="0" max="80" value="0" class="volume-slider-range" />
+          </div>
+        </div>
+
+        <!-- Clock & Greeting Settings -->
+        <div>
+          <h4 class="settings-section-title">Clock & Header</h4>
+          <div class="form-group">
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="setting-clock-24h" />
+              <span>Use 24-Hour Time</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="setting-clock-seconds" />
+              <span>Show Live Seconds</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Your Name (Greeting)</label>
+            <input type="text" id="setting-user-name" class="form-input" placeholder="e.g. Alex" />
+          </div>
+        </div>
+
+        <!-- Default Search Engine -->
+        <div>
+          <h4 class="settings-section-title">Search Engine</h4>
+          <div class="form-group">
+            <select id="setting-search-engine" class="form-select">
+              <option value="google">Google</option>
+              <option value="duckduckgo">DuckDuckGo</option>
+              <option value="bing">Bing</option>
+              <option value="youtube">YouTube</option>
+              <option value="github">GitHub</option>
+              <option value="reddit">Reddit</option>
+              <option value="perplexity">Perplexity AI</option>
+              <option value="chatgpt">ChatGPT</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Widget Toggles -->
+        <div>
+          <h4 class="settings-section-title">Visible Widgets</h4>
+          <div style="display:flex; flex-direction:column; gap:0.5rem;">
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="setting-toggle-weather" checked />
+              <span>Weather Pill</span>
+            </label>
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="setting-toggle-pomodoro" checked />
+              <span>Pomodoro Focus Timer</span>
+            </label>
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="setting-toggle-ambient" checked />
+              <span>Ambient Soundscapes</span>
+            </label>
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="setting-toggle-quotes" checked />
+              <span>Daily Quotes</span>
+            </label>
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="setting-toggle-notes" checked />
+              <span>Tasks & Scratchpad</span>
+            </label>
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="setting-toggle-bookmarks" checked />
+              <span>Bookmarks & Shortcuts</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Backup & Reset -->
+        <div>
+          <h4 class="settings-section-title">Backup & Restore</h4>
+          <div style="display:flex; flex-direction:column; gap:0.5rem;">
+            <button type="button" class="btn btn-secondary" id="setting-export-btn">
+              📤 Export Backup (JSON)
+            </button>
+            <label class="btn btn-secondary" style="cursor:pointer; text-align:center;">
+              📥 Restore from File
+              <input type="file" id="setting-import-file" accept=".json" style="display:none;" />
+            </label>
+            <button type="button" class="btn btn-danger" id="setting-reset-btn">
+              ⚠️ Reset All to Defaults
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT MODULES -->
+  <script src="js/storage.js"></script>
+  <script src="js/bookmarks.js"></script>
+  <script src="js/widgets/weather.js"></script>
+  <script src="js/widgets/pomodoro.js"></script>
+  <script src="js/widgets/notes.js"></script>
+  <script src="js/widgets/ambient.js"></script>
+  <script src="js/widgets/quotes.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

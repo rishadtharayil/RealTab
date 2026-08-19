@@ -1,6 +1,6 @@
 # RealTab ✨ - Minimalist Matte New Tab Dashboard
 
-An aesthetic, lightweight, and modern Chrome New Tab extension with a **matte neutral design**, voice search, multi-engine search, live weather, pomodoro timer, scratchpad & to-do list, offline procedural ambient soundscapes, and comprehensive bookmark management.
+An aesthetic, lightweight, and modern Chrome New Tab extension with a **matte neutral design**, multi-engine search, live weather, pomodoro timer, scratchpad & to-do list, offline procedural ambient soundscapes, and comprehensive bookmark management.
 
 ---
 
@@ -14,7 +14,6 @@ An aesthetic, lightweight, and modern Chrome New Tab extension with a **matte ne
   - **Warm Sand & Stone**: Warm taupe and stone minimalism.
   - **Soft Lavender**: Gentle mist violet and off-white.
   - **Matte Slate**: Low-glare matte dark slate.
-- 🎙️ **Voice Search**: Real-time voice query transcription using the Web Speech API with animated waveform visualizer.
 - 🔍 **Omni-Search Engine**: Instant switching between Google, DuckDuckGo, Bing, YouTube, GitHub, Reddit, Perplexity AI, and ChatGPT. Direct URL detection and `/` shortcut.
 - 🔖 **Bookmark & Shortcut Manager**:
   - High-res auto-favicon resolver with letter avatar fallback.
@@ -65,12 +64,11 @@ RealTab/
 │   └── icon128.png          # 128x128 extension icon
 ├── css/
 │   ├── main.css             # Base styles, matte design tokens, and themes
-│   ├── bookmarks.css        # Search bar, voice modal, and bookmark grid
+│   ├── bookmarks.css        # Search bar and bookmark grid
 │   └── widgets.css          # Pomodoro, Notes, Ambient audio, Weather, Settings
 └── js/
     ├── app.js               # Application coordinator & keyboard shortcuts
     ├── storage.js           # Universal Chrome/localStorage/IndexedDB layer
-    ├── speech.js            # Web Speech API voice search controller
     ├── bookmarks.js         # Bookmark & shortcut manager
     ├── settings.js          # Theme selector, layout toggles & backup
     └── widgets/
